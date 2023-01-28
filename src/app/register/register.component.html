@@ -1,0 +1,456 @@
+<!-- <p>register works!</p>  --->
+
+
+<div class="sign__up__1">
+    
+        <nav class="navbar fixed-top navbackground__color navbar-expand-sm navbar-dark mb-4">
+            <a class="navbar-brand text-light" href="/">uFirst</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+      
+            <div class="collapse navbar-collapse" id="mobile-nav">
+      
+              <ul class="navbar-nav ml-auto">
+              <!--  <li class="nav-item mt-2">
+                  <a class="nav-link" href="/About">
+                    About
+                  </a>
+                </li>
+                <li class="nav-item mt-2">
+                  <a class="nav-link" href="/WhyuFirst">
+                    Why uFirst?
+                  </a>
+                </li>
+                <li class="nav-item mt-2">
+                  <a class="nav-link" href="/FAQ">
+                    FAQ
+                  </a>
+                </li>
+                <li class="nav-item mt-2">
+                  <a class="nav-link" href="/Contact">
+                    Contact
+                  </a>
+                </li>  -->
+                <li class="nav-item">
+              <a class="nav-link" href="/auth/doctorlogin">
+               <button class = "btn btn-info">Doctor Login</button>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/auth/login">
+               <button class = "btn btn-success">Login</button>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/doctorsignup">
+               <button class = "btn btn-info">Doctor  SignUp</button>
+              </a>
+            </li>
+              </ul>
+            </div>
+        </nav>    
+    
+        <div class = "signup__01 signup__form__container">
+        <div class="container-fluid">
+    
+            <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    
+                <div class="row">
+                <div class="col-md-8">
+        
+                <div class = "form__left">
+        
+                <h1 class = "form__heading">Personal Details</h1>
+        
+                
+        
+                <div class = "form-row">
+        
+                <div class = "col-md-4 mb-3 mr-5">
+                
+                <label for="firstname">First Name</label>
+            <input type="text" class="form-control form-control-md"  name="firstname" [(ngModel)]="form.firstname" #firstname="ngModel"   (ngModelChange)="transform(form.firstname)"
+              required />
+            <div *ngIf="f.submitted && firstname.invalid">
+              <div *ngIf="firstname.errors?.required"><p style="color:red;">User First Name is required </p></div>
+            </div>
+        
+                </div>
+        
+               
+        
+                <div class = "col-md-4 mb-3 mr-5">
+
+                <label for="lastname">Last Name</label>
+                  <input type="text" class="form-control form-control-md"   name="lastname" [(ngModel)]="form.lastname" #lastname="ngModel"   (ngModelChange)="transform1(form.lastname)"
+                   required />
+                 <div *ngIf="f.submitted && lastname.invalid">
+                    <div *ngIf="lastname.errors?.required"><p style="color:red;">User Last Name is required</p></div>
+                 </div>
+        
+                </div>
+                </div>
+    
+                
+    
+                <div class = "form-row">
+                <div class = "col-md-4 mb-3 mr-5">
+        
+                    <label for="username">Username</label>
+        
+                <div class="input-group is-invalid">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="validatedInputGroupPrepend">@</span>
+                </div>
+               
+            <input type="text" class="form-control form-control-md"  name="username" [(ngModel)]="form.username" #username="ngModel"
+              required />
+            <div *ngIf="f.submitted && username.invalid">
+              <div *ngIf="username.errors?.required"><p style="color:red;">Username is required </p></div>
+            </div>
+                </div>
+        
+                </div>
+        
+               
+        
+                <div class = "col-md-4 mb-3 mr-5">
+        
+                    <label for="username">User Email</label>
+                    <input type="text" class="form-control form-control-md"  name="useremail" [(ngModel)]="form.useremail" #useremail="ngModel"
+                      required />
+                    <div *ngIf="f.submitted && useremail.invalid">
+                      <div *ngIf="useremail.errors?.required"><p style="color:red;">User Email is required</p></div>
+                    </div>
+        
+                </div>
+                </div>
+    
+                <!-- Password  -->
+    
+                <div class = "form-row">
+                <div class = "col-md-4 mb-3 mr-5">
+              
+                    <label for="password">Password</label>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Password*</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'"  placeholder="Password" class="form-control form-control-md"  name="password" [(ngModel)]="form.password" #password="ngModel"
+                      required minlength="8" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" />
+                      <mat-icon matSuffix  (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      <mat-hint *ngIf="!password.value">Enter your password</mat-hint>
+                    </mat-form-field>
+                    <div *ngIf="f.submitted && password.invalid">
+                      <div *ngIf="password.errors?.required"><p style="color:red;">Password is required</p></div>
+                      <div *ngIf="password.errors?.minlength"><p style="color:red;">Password must be at least 8 characters</p></div>
+                      <div *ngIf="password.errors?.pattern"><p style="color:red;"> Password must have one capital, one number and one special character</p></div>
+                    </div>
+    
+                 
+    
+                 </div>
+    
+                 <!-- Confirm Password  -->
+    
+                 <div class = "col-md-4 mb-3 mr-5">
+              
+                    <label for="cpharse">Confirm Password</label>
+                    
+                      <mat-form-field class="example-full-width">
+                          <mat-label>Confirm Password*</mat-label>
+                      <input matInput [type]="hide1 ? 'password' : 'text'"  placeholder="Password" class="form-control form-control-md"  name="cpharse" [(ngModel)]="form.cpharse" #cpharse="ngModel"
+                        required minlength="8" pattern="{{ password.value }}" />
+                        <mat-icon matSuffix  (click)="hide1 = !hide1">{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        <mat-hint *ngIf="!cpharse.value">Enter your confirm  password</mat-hint>
+                      </mat-form-field>
+                    <div *ngIf="f.submitted && cpharse.invalid">
+                      <div *ngIf="cpharse.errors?.required"><p style="color:red;">Confirm Password is required</p></div>
+                      <div *ngIf="cpharse.errors?.minlength"><p style="color:red;">Confirm Password must be at least 8 characters</p></div>
+                      <div *ngIf="cpharse.errors?.pattern"><p style="color:red;"> Password & Confirm Password does not match.</p></div>
+                    </div> 
+    
+                 
+        
+                 </div>
+                 </div>
+    
+    
+                 <div class = "form-row">
+                 <div class = "col-md-4 mb-3 mr-5">
+          
+                    <label for="userphoneno"> Phone Number </label>
+                    <input type="text" class="form-control form-control-md"  name="userphoneno" [(ngModel)]="form.userphoneno" #userphoneno="ngModel"
+                      required  pattern="[0-9]+" />
+                    <div *ngIf="f.submitted && userphoneno.invalid">
+                      <div *ngIf="userphoneno.errors?.required"> <p style="color:red;"> Phone Number is required </p></div>
+                      <div *ngIf="userphoneno.errors?.pattern"><p style="color:red;"> Number Accepts Only. </p> </div>
+                    </div>
+    
+                 </div>
+    
+                
+    
+                <div class = "col-md-4 mb-3 mr-5">
+          
+               <!--  <label htmlFor="ssn">SSN / AADHAR</label>
+                 <input type = "text" name="ssn" placeholder = "SSN / Aadhar" 
+          
+                 class = "form-control form-control-md"
+          
+                 />   -->
+
+                 <label for="useraddress1">Address Line 1</label>
+        <input type="text" class="form-control form-control-md" style="width:400px;" placeholder="address line 1" name="useraddress1" [(ngModel)]="form.useraddress1" #useraddress1="ngModel"
+          required minlength="10" maxlength="40" />
+        <div *ngIf="f.submitted && useraddress1.invalid">
+          <div *ngIf="useraddress1.errors?.required">  <p style="color:red;">  Address is  required  </p> </div>
+        </div>
+
+               <!--  <label for="aadharno"> AADHAR Number </label>
+                 <input type="text" class="form-control form-control-md"  name="aadharno" [(ngModel)]="form.aadharno" #aadharno="ngModel"
+                   required  pattern="[0-9]+" maxlength="15" />
+                 <div *ngIf="f.submitted && aadharno.invalid">
+                   <div *ngIf="aadharno.errors?.required"> <p style="color:red;"> Aadhar Number is required </p></div>
+                   <div *ngIf="aadharno.errors?.pattern"> Number Accepts Only.</div>
+                   <div *ngIf="aadharno.errors?.maxlength">Aadhar Number must be  15 characters</div>
+                 </div>  -->
+                <!-- </div>  -->
+       
+                 </div> 
+                 </div>
+    
+                 <!-- Country  -->
+    
+                 <div class = "form-row country__container">
+                 <div class = "col-md-4 mb-3 mr-5">
+          
+                    <label for="usercountry">Country</label>
+                    <input type="text" class="form-control form-control-md"  name="usercountry" [(ngModel)]="form.usercountry" #usercountry="ngModel"
+                      required />
+                    <div *ngIf="f.submitted && usercountry.invalid">
+                      <div *ngIf="usercountry.errors?.required"><p style="color:red;">Country is required</p></div>
+                    </div>
+       
+                 </div>
+                    
+                 <div class = "col-md-4 mb-3 mr-5">
+           
+                  <label for="useraddress2">Address Line 2</label>
+                  <input type="text" class="form-control orm-control-md" style="width:400px;" placeholder="address line 2"  value ="address2" name="useraddress2" [(ngModel)]="form.useraddress2" #useraddress2="ngModel"
+                     minlength="0" maxlength="40" />
+                <!--   <div *ngIf="f.submitted && useraddress2.invalid">
+                     <div *ngIf="useraddress2.errors?.required">Address Line 2 is  required</div> 
+                  </div>  --->
+
+                 </div>
+                 
+    
+                 </div>
+    
+                
+    
+                 <div class = "form-row">
+                 <div class = "col-md-4 mb-3 mr-5">
+          
+                    <label for="userstates">State</label>
+                    <input type="text" class="form-control form-control-md"  name="userstates" [(ngModel)]="form.userstates" #userstates="ngModel"
+                      required />
+                    <div *ngIf="f.submitted && userstates.invalid">
+                      <div *ngIf="userstates.errors?.required"><p style="color:red;">State is required</p></div>
+                    </div>
+                 
+       
+                 </div>
+    
+                
+    
+                 <div class = "col-md-4 mb-3 mr-5">
+                    <label for="userpincode"> Pin Code </label>
+                    <input type="text" class="form-control form-control-md" name="userpincode" [(ngModel)]="form.userpincode" #userpincode="ngModel"
+                    required  pattern="[0-9]+"/>
+                  <div *ngIf="f.submitted && userpincode.invalid">
+                    <div *ngIf="userpincode.errors?.required"> <p style="color:red;">Doctor Residential Pin Code  is required </p></div>
+                    <div *ngIf="userpincode.errors?.pattern"> <p style="color:red;">Pin Code Number Accepts</p></div>
+                  </div>
+       
+                 </div>
+                 </div>
+    
+                 <!-- City -->
+    
+                 <div class = "form-row ">
+                 <div class = "col-md-4 mb-3 mr-5">
+    
+                    <label for="usercity">City</label>
+                    <input type="text" class="form-control form-control-md"  name="usercity" [(ngModel)]="form.usercity" #usercity="ngModel"
+                      required />
+                    <div *ngIf="f.submitted && usercity.invalid">
+                      <div *ngIf="usercity.errors?.required"><p style="color:red;">City is required</p></div>
+                    </div>
+       
+                 </div>
+    
+                 <!-- Form Submit which moves you to Sign-up Page 2  -->
+          
+                 <div class = "col-md-4" style = "margin-top: 32px">
+                 <button class = "btn btn-block text-light"> Register </button>
+                 <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+                    <p style="color:red;"> Signup failed! </p> <br/>{{errorMessage}}
+                  </div>
+                 </div>
+    
+                 <!-- Display in case of Doctor Sign Up  -->
+    
+                 <!-- <div class = "col-md-4" style = "margin-top: 32px">
+                 <input class = "btn btn-block text-light" type="submit" value = "SUBMIT FOR VERIFICATION" />
+                 </div>  -->
+    
+                 </div>
+                 </div>
+                 </div>
+    
+                 <div class = "form__division col-md-4">
+    
+                 <div class = "division__02">
+    
+                 <!-- Profile Image  -->
+    
+             <!--    <div class = "form-group">
+    
+                 <div class = "col-md-9">
+    
+                    <i class="fas fa-user-circle" style = "height: 200px; width: 200px"></i>
+    
+                    
+                    <label> 
+                    <div class = "btn text-light mt-1 upload__button">
+                    UPLOAD
+                    </div>
+                    <input class = "upload__file" name = "profileImage" type="file" onChange = {onFileChange}/>
+                    </label>  
+    
+                    <div class = "file__preview">
+    
+                    </div>
+      
+                    </div>
+                 </div>   --->
+    
+                 <!-- Date of Birth  -->
+    
+                 <div class = "form-group">
+    
+                 <div class = "col-md-9">
+      
+                    <label for="userdob">Date Of Birth</label> <br/>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Choose Date of Birth </mat-label>
+                      <input matInput [matDatepicker]="picker" class="form-control form-control-md"  name="userdob" [(ngModel)]="form.userdob"  [max]="maxDate"   #userdob="ngModel" (ngModelChange)="CalculateAge(form.userdob)">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker [(ngModel)]="form.userdob"></mat-datepicker>
+                    </mat-form-field>
+                    <div *ngIf="f.submitted && userdob.invalid">
+                          <div *ngIf="userdob.errors?.required"> <p style="color:red;"> Date of Birth is required </p></div>
+                        </div>
+                        <label for="userage">Age</label>
+                        <input type="text" class="form-control form-control-md" value="{{form.userage}}" min="1" style="width:400px;" placeholder="Only Numbers"  name="userage" [(ngModel)]="form.userage" #userage="ngModel"
+                          readonly />
+                       <div *ngIf="f.submitted && userage.invalid">
+                          <div *ngIf="userage.errors?.min"> <p style="color:red;"> User Age atleast 1 days </p></div>
+                        </div>
+                 </div>
+                 </div>
+    
+                 <!-- SEX  -->
+    
+                 <div class = "form-group">
+    
+                 <div class = "col-md-9">
+    
+                    <label for="usergender">Sex</label> <br/>
+                    <mat-form-field appearance="fill">
+                          <mat-label>Sex</mat-label>
+                       <select matNativeControl name="usergender" class="form-control form-control-md"  [(ngModel)]="form.usergender" #usergender="ngModel">
+                          <option>None</option>
+                          <option value="Female">Female</option>
+                          <option value="Male">Male</option>
+                          <option value="Other">Other</option>
+                        </select>
+                   </mat-form-field>
+                   <div *ngIf="f.submitted && usergender.invalid">
+                    <div *ngIf="usergender.errors?.required"> <p style="color:red;"> Gender is required </p></div>
+                  </div>
+    
+                 </div>
+                 </div>
+    
+                 <!-- BLOOD GROUP  -->
+    
+                 <div class = "form-group">
+    
+                 <div class = "col-md-9">
+       
+                   <!-- <label for="userbloodgroup">User Blood Group</label>
+                    <input type="text" class="form-control form-control-md"   style="width:400px;" name="userbloodgroup" [(ngModel)]="form.userbloodgroup" #userbloodgroup="ngModel"
+                      required />
+                    <div *ngIf="f.submitted && userbloodgroup.invalid">
+                      <div *ngIf="userbloodgroup.errors?.required"> <p style="color:red;">Patient Blood Group is required </p></div>
+                    </div> -->
+       
+                 </div>
+                 </div>
+    
+                
+    
+                 <div class = "form-group">
+    
+                 <div class = "col-md-9">
+    
+                  <label for="useradhrno"> AADHAR Number </label>
+                  <input type="text" class="form-control form-control-md" style="width:400px;"  name="useradhrno" [(ngModel)]="form.useradhrno" #useradhrno="ngModel"
+                    required  pattern="[0-9]+" maxlength="15" />
+                  <div *ngIf="f.submitted && useradhrno.invalid">
+                    <div *ngIf="useradhrno.errors?.required"> <p style="color:red;"> Aadhar Number is required </p></div>
+                    <div *ngIf="useradhrno.errors?.pattern"> Number Accepts Only.</div>
+                    <div *ngIf="useradhrno.errors?.maxlength">Aadhar Number must be  15 characters</div>
+                  </div>
+    
+    
+                 </div>
+                 </div>
+    
+                 <!-- Weight done in the same format as height apart from the exception that there's no Secondary Unit and only two main units, i.e. KG and Pounds.  -->
+    
+                 <div class = "form-group">
+    
+                 <div class = "col-md-9">
+    
+                  <label for="userlangu">Language</label>
+                  <input type="text" class="form-control form-control-md" style="width:400px;"  name="userlangu" [(ngModel)]="form.userlangu" #userlangu="ngModel"
+                    required />
+                  <div *ngIf="f.submitted && userlangu.invalid">
+                    <div *ngIf="userlangu.errors?.required"> <p style="color:red;">Language is required</p></div>
+                  </div>
+                
+    
+                 </div>
+                 </div>
+             
+                 </div>
+    
+                 </div>
+                
+                 </div>
+    
+                 </form>
+          
+                 </div>
+       
+                 </div>
+    
+                 <footer class="ftr text-white p-4 text-center" id="loginrow">
+                 Copyright &copy; 2023 uFirst
+                 </footer>
+    
+    </div>
+

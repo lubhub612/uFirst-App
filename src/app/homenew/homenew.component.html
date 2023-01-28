@@ -1,0 +1,34 @@
+<div *ngIf="info.token; else loggedOut">
+    
+        <div class="home_wraper">
+    
+          <div class="row">
+            <div class="col-sm-6">
+                <div class="account_info"> 
+            <h3 class="text-primary">Your  Account  Information</h3>
+            <div class="form-group">
+              <label>welcome:</label>
+              <p>{{info.firstname}} {{info.lastname}}</p>
+            </div>
+            
+  
+    
+          </div>
+            </div>
+            
+          </div>
+        
+          <button  class="btn btn-link"  (click)="verify()">Verify Aadhar</button>.
+          
+         <button  class="btn btn-link"  (click)="logout()">logout</button>.
+    
+    
+    
+      </div>
+
+    </div>  
+  
+    <ng-template #loggedOut>
+    Please <button  class="btn btn-link"  (click)="lhedi()">login</button>.
+    </ng-template>
+    

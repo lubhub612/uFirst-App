@@ -1,0 +1,34 @@
+export class JwtResponse {
+    token: string;
+    type: string;
+    firstname: string;
+    lastname: string;
+    username: string;
+    useremail:string;
+    usercity: string;
+    userstates: string;
+    usercountry: string;
+    usersmoker: string;
+    useralcholic: string;
+    userdob: string;
+    userage: string;
+    userrole: string;
+    userbloodgroup: string;
+    userpincode: string;
+    userphoneno: string;
+    usermedino: string;
+    usergender: string;
+    useraddress1: string;
+    userheight: string;
+    userheightunit: string;
+    userweight: string;
+    userweightunit: string;
+    userfamilydoctor: string;
+    userfamilymember: string;
+    useremephoneno: string;
+    doctorfee: string;
+    doctorabout: string;
+    doctorspecialization: string;
+    doctoreducation:string;
+    userprofilepicname:string;
+}

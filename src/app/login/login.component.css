@@ -1,0 +1,58 @@
+.example-full-width {
+  width: 350px;
+  }
+
+  .login__form{
+
+    font-family: Latina;
+
+}
+
+.login__container {
+
+    margin-top: 90px;
+
+}
+
+.password__icon {
+
+    margin-top: -32px;
+    float:right;
+    margin-right: 15px;
+
+}
+
+.form-control.form-control-lg {
+
+    background-color: #FBFBFB;
+    border: 1px solid #D9D9D9;
+    box-shadow: 0px 1px blue 1px rgba(225,225,225 / 50%);
+    border-radius: 3px;
+
+}
+
+.btn.btn-block {
+
+    background-color: #0060bf;
+
+}
+
+.ftr {
+
+    position: absolute; 
+    bottom: 0;
+    width: 100%;
+    background-color: #212735;
+  
+}
+
+
+.navbackground__color{
+
+  background-color: #212735;
+  
+}
+
+#loginrow{
+    margin-left: -130px;
+}

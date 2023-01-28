@@ -1,0 +1,35 @@
+<!--<p>docverification works!</p>  -->
+
+<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+
+    <div class = "form-group">
+  
+        <div class = "col-md-9">
+         <label for="aadharno"> AADHAR Number </label>
+         <input type="text" class="form-control form-control-md" style="width:400px;"  name="aadharno" [(ngModel)]="form.aadharno" #aadharno="ngModel"
+           required  pattern="[0-9]+" maxlength="12" />
+         <div *ngIf="f.submitted && aadharno.invalid">
+           <div *ngIf="aadharno.errors?.required"> <p style="color:red;"> Aadhar Number is required </p> </div>
+           <div *ngIf="aadharno.errors?.pattern">  <p style="color:red;">Number Accepts Only. </p> </div>
+           <div *ngIf="aadharno.errors?.maxlength">  <p style="color:red;"> Aadhar Number must be  12 characters </p> </div>
+         </div>
+        
+    
+    
+        </div>
+            <div class = "col-md-4" style = "margin-top: 32px">
+        <button class = "btn btn-success text-light"> Verify  AADHAR </button>
+        <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+           <p style="color:red;"> AADHAR VERIFICATION failed! </p> <br/>{{errorMessage}}
+         </div>
+     </div>
+
+    </div>
+
+    
+
+</form>
+
+<button  class="btn btn-link"  (click)="logout()">logout</button>.
+
+<button  class="btn btn-link"  (click)="hedi()">Back to Home</button>.
